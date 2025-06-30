@@ -1,10 +1,15 @@
 {
-  "domain": "webscraper",
-  "name": "Web Scraper",
-  "version": "0.1.0",
+  "domain": "scrape_me",
+  "name": "Scrape ME",
+  "version": "0.0.1",
   "documentation": "https://github.com/DotumZane/Scrape_ME",
-  "requirements": ["aiohttp>=3.8.0", "beautifulsoup4>=4.11.0"],
+  "requirements": [
+    "aiohttp>=3.8.0",
+    "beautifulsoup4>=4.11.0"
+  ],
   "dependencies": [],
-  "codeowners": ["@DotumZane"],
+  "codeowners": [
+    "@DotumZane"
+  ],
   "config_flow": true
 }
