@@ -1,0 +1,19 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Webscraper Setup",
+                "description": "Configure your webscraper sensor",
+                "data": {
+                    "name": "Sensor Name",
+                    "login_url": "Login URL",
+                    "username": "Username",
+                    "password": "Password",
+                    "target_url": "Target URL (page to scrape)",
+                    "css_selector": "CSS Selector"
+                }
+            }
+        }
+    },
+    "title": "Webscraper"
+}

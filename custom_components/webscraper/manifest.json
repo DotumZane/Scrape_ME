@@ -1,0 +1,10 @@
+{
+  "domain": "webscraper",
+  "name": "Web Scraper",
+  "version": "0.1.0",
+  "documentation": "https://github.com/example/home-assistant-webscraper",
+  "requirements": ["aiohttp", "beautifulsoup4"],
+  "dependencies": [],
+  "codeowners": ["@DotumZane"],
+  "config_flow": true
+}
