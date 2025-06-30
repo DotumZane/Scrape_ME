@@ -1,8 +1,8 @@
 {
   "domain": "webscraper",
   "name": "Web Scraper",
-  "version": "0.0.1",
-  "documentation": "https://github.com/DotumZane/Scrape_ME/tree/main/custom_components/webscraper",
+  "version": "0.1.0",
+  "documentation": "https://github.com/DotumZane/Scrape_ME",
   "requirements": ["aiohttp>=3.8.0", "beautifulsoup4>=4.11.0"],
   "dependencies": [],
   "codeowners": ["@DotumZane"],
