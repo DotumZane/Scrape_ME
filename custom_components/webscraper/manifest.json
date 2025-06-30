@@ -2,7 +2,7 @@
   "domain": "webscraper",
   "name": "Web Scraper",
   "version": "0.0.1",
-  "documentation": "https://github.com/DotumZane/home-assistant-webscraper",
+  "documentation": "https://github.com/DotumZane/Scrape_ME-webscraper",
   "requirements": ["aiohttp>=3.8.0", "beautifulsoup4>=4.11.0"],
   "dependencies": [],
   "codeowners": ["@DotumZane"],
