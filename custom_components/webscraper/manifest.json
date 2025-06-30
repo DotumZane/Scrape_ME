@@ -1,9 +1,9 @@
 {
   "domain": "webscraper",
   "name": "Web Scraper",
-  "version": "0.1.0",
-  "documentation": "https://github.com/example/home-assistant-webscraper",
-  "requirements": ["aiohttp", "beautifulsoup4"],
+  "version": "0.0.1",
+  "documentation": "https://github.com/DotumZane/home-assistant-webscraper",
+  "requirements": ["aiohttp>=3.8.0", "beautifulsoup4>=4.11.0"],
   "dependencies": [],
   "codeowners": ["@DotumZane"],
   "config_flow": true
