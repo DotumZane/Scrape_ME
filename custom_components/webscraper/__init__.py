@@ -9,7 +9,7 @@ DOMAIN = "webscraper"
 _LOGGER = logging.getLogger(__name__)
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    return True
+#    return True
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     await hass.async_forward_entry_setup(entry, "sensor")
