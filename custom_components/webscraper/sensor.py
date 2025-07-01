@@ -43,3 +43,6 @@ class WebScraperSensor(Entity):
     async def async_update(self):
         _LOGGER.debug("Manual update triggered for Webscraper Sensor")
         await self.coordinator.async_request_refresh()
+
+data = {**entry.data, **entry.options}  # options override data
+api = WebScraperAPI(data)
