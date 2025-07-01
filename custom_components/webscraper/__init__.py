@@ -19,3 +19,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     _LOGGER.debug("Unloading Webscraper config entry: %s", entry.as_dict())
     return await hass.config_entries.async_unload_platforms(entry, ["sensor"])
+
+from .options_flow import WebscraperOptionsFlowHandler
+
+async def async_get_options_flow(config_entry):
+    return WebscraperOptionsFlowHandler(config_entry)
