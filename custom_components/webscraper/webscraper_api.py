@@ -19,6 +19,18 @@ class WebScraperAPI:
             _LOGGER.debug("Creating new aiohttp ClientSession")
             self._session = aiohttp.ClientSession()
 
+    async def test_login(self):
+        await self._ensure_session()
+        login_payload = {"username": self._username, "password": self._password}
+        try:
+            async with self._session.post(self._login_url, data=login_payload) as resp:
+                _LOGGER.debug("Test login response status: %s", resp.status)
+                if resp.status != 200:
+                    raise Exception(f"Login failed: {resp.status}")
+        except Exception as e:
+            _LOGGER.error("Exception during test login: %s", e)
+            raise
+
     async def async_get_data(self):
         await self._ensure_session()
         # 1. Login
