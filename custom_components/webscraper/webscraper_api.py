@@ -52,9 +52,18 @@ class WebScraperAPI:
                 html = await resp.text()
                 soup = BeautifulSoup(html, "html.parser")
                 element = soup.select_one(self._css_selector)
-                if element:
-                    _LOGGER.debug("Scrape result: %s", element.text.strip())
-                    return element.text.strip()
+if element:
+    # If it's an input or similar, get 'value', else get text
+    value = element.get('value', None)
+    if value is not None:
+        result = value.strip()
+    else:
+        result = element.text.strip()
+    _LOGGER.debug("Scrape result: %s", result)
+    return result
+else:
+    _LOGGER.warning("No element found for selector: %s", self._css_selector)
+    return "No element found"
                 else:
                     _LOGGER.warning("No element found for selector: %s", self._css_selector)
                     return "No element found"
