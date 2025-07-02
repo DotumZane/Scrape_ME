@@ -1,6 +1,7 @@
 import logging
 import aiohttp
 from bs4 import BeautifulSoup
+import re
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -45,25 +46,32 @@ class WebScraperAPI:
         except Exception as e:
             _LOGGER.error("Exception during login: %s", e)
             return f"Login exception: {e}"
+
         # 2. Scrape
         try:
             async with self._session.get(self._target_url) as resp:
                 _LOGGER.debug("Scraping %s, status: %s", self._target_url, resp.status)
                 html = await resp.text()
+                # Optional: log a snippet of HTML for debugging
+                _LOGGER.debug("Fetched HTML snippet: %s", html[:300])
                 soup = BeautifulSoup(html, "html.parser")
                 element = soup.select_one(self._css_selector)
-if element:
-    # If it's an input or similar, get 'value', else get text
-    value = element.get('value', None)
-    if value is not None:
-        result = value.strip()
-    else:
-        result = element.text.strip()
-    _LOGGER.debug("Scrape result: %s", result)
-    return result
-else:
-    _LOGGER.warning("No element found for selector: %s", self._css_selector)
-    return "No element found"
+                if element:
+                    # Prefer value attribute if present, else use text
+                    value = element.get('value', None)
+                    if value is None:
+                        value = element.text.strip()
+                    else:
+                        value = value.strip()
+                    # Extract first number (including decimals)
+                    match = re.search(r"(\d+(\.\d+)?)", value)
+                    if match:
+                        result = float(match.group(1))
+                        _LOGGER.debug("Scrape result (number): %s", result)
+                        return result
+                    else:
+                        _LOGGER.warning("Could not find a number in the element content: '%s'", value)
+                        return "No number found"
                 else:
                     _LOGGER.warning("No element found for selector: %s", self._css_selector)
                     return "No element found"
