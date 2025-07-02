@@ -1,7 +1,7 @@
 {
   "domain": "scrape_me",
   "name": "Scrape ME",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "documentation": "https://github.com/DotumZane/Scrape_ME",
   "requirements": [
     "aiohttp>=3.8.0",
